@@ -1,0 +1,8 @@
+# This directory holds your X API credentials.
+# Files here are gitignored — never commit real credentials.
+#
+# Required files:
+#   x-oauth2.env — OAuth 2.0 tokens (auto-generated after login)
+#   x-oauth.env  — OAuth 1.0a credentials (from X Developer portal)
+#
+# See docs/X-CREDENTIALS.md for setup instructions.

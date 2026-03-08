@@ -1,0 +1,35 @@
+# Environment and secrets
+.env
+.env.local
+.secrets/*.env
+
+# Database
+*.db
+*.db-journal
+pipeline.db
+
+# Personal content
+archive/
+media/generated/
+seshat-drafts-*.md
+VALIDATION.md
+
+# Python
+__pycache__/
+agents/__pycache__/
+*.pyc
+
+# Generated assets
+static/a13becec*.png
+
+# Internal planning (not for public repo)
+info/
+SANITIZATION-PLAN.md
+
+# Live instance configs (use *.example templates)
+arsenal-personal-x.service
+flow.autmori.com.conf
+
+# Old spec docs (internal)
+docs/SPEC-v1.md
+docs/EXECUTION-v1.md

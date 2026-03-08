@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Flow — Connect to X</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0A0A0A;
+      color: #ECECEC;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .login-card {
+      max-width: 400px;
+      width: 100%;
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+    
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .logo .accent {
+      color: #FF6B35;
+    }
+    
+    .tagline {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .connect-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: #000;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    
+    .connect-btn:hover {
+      background: #1a1a1a;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .connect-btn:active {
+      transform: scale(0.98);
+    }
+    
+    .connect-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .note {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.35);
+      line-height: 1.5;
+    }
+    
+    .error-box {
+      background: rgba(255, 100, 100, 0.1);
+      border: 1px solid rgba(255, 100, 100, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #ff8888;
+    }
+    
+    .error-box:empty {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="logo">FLOW<span class="accent">.</span></div>
+    <div class="tagline">Personal X Pipeline</div>
+    
+    <div class="error-box" id="error"></div>
+    
+    <a href="/oauth/start" class="connect-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+      Connect with X
+    </a>
+    
+    <p class="note">
+      Authorize Flow to post on your behalf.<br>
+      Your credentials are stored locally on the server.
+    </p>
+  </div>
+  
+  <script>
+    // Check for error params
+    const params = new URLSearchParams(window.location.search);
+    const error = params.get('error');
+    const errorDesc = params.get('error_description');
+    
+    if (error) {
+      const errorBox = document.getElementById('error');
+      errorBox.textContent = errorDesc || error;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "id": "personal-x-raw-check",
+  "schedule": "0 * * * *",
+  "agent": "main",
+  "enabled": true,
+  "prompt": "Run the Personal X raw ideas check:\n\n1. Execute: python3 content/personal-x/scripts/check_raw_ideas.py\n2. If any raw ideas are found, spawn Seshat to refine each one\n3. Use sessions_spawn with agentId='seshat' and the REFINE TASK format from Seshat's AGENTS.md\n\nIf no raw ideas exist, reply with HEARTBEAT_OK"
+}

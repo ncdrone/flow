@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>X Pipeline</title>
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#0A0A0A">
+    
+    <!-- iOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="X.">
+    <link rel="apple-touch-icon" href="/static/icon-180.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css?v=2">
+</head>
+<body>
+
+    <!-- Fixed Tab Bar -->
+    <nav class="tab-bar">
+        <div class="tab-brand">X<span class="tab-brand-dot">.</span></div>
+        <div class="tab-links">
+            <button class="tab-link active" data-tab="tab-dump">DUMP</button>
+            <button class="tab-link" data-tab="tab-ideas">IDEAS</button>
+            <button class="tab-link" data-tab="tab-drafts">DRAFTS</button>
+            <button class="tab-link" data-tab="tab-posted">POSTED</button>
+        </div>
+        <button class="verify-btn" id="verify-btn" onclick="verifyConnection()" title="Check X credentials without posting">⚡</button>
+    </nav>
+
+    <!-- Tab Panels -->
+    <main class="tab-container">
+
+        <!-- DUMP Tab -->
+        <section id="tab-dump" class="tab-panel active">
+            <div class="panel-inner">
+                <div id="dump-status"></div>
+                <form id="dump-form">
+                    <textarea
+                        id="dump-content"
+                        placeholder="What's on your mind?"
+                        rows="5"
+                    ></textarea>
+                    <div class="form-row">
+                        <input
+                            type="url"
+                            id="dump-link"
+                            placeholder="Link (optional)"
+                        >
+                        <input
+                            type="text"
+                            id="dump-tags"
+                            placeholder="Tags (comma separated)"
+                        >
+                    </div>
+                    <div class="upload-zone" id="upload-zone">
+                        <input type="file" id="dump-image" accept="image/*" hidden>
+                        <span class="upload-text">Drop image or click to upload</span>
+                        <span class="upload-preview" id="upload-preview"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Submit</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- IDEAS Tab -->
+        <section id="tab-ideas" class="tab-panel">
+            <div class="panel-inner">
+                <div id="ideas-status"></div>
+                <div id="ideas-list" class="card-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- DRAFTS Tab -->
+        <section id="tab-drafts" class="tab-panel">
+            <div class="panel-inner">
+                <div id="drafts-status"></div>
+                <div id="drafts-list" class="card-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- POSTED Tab -->
+        <section id="tab-posted" class="tab-panel">
+            <div class="panel-inner">
+                <div id="posted-status"></div>
+                <div id="posted-list" class="card-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal: Edit Idea -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Edit Idea</h3>
+                <button class="btn-close" id="modal-close">X</button>
+            </div>
+            <div class="modal-body">
+                <textarea id="modal-content" rows="8"></textarea>
+                <input type="url" id="modal-link" placeholder="Link">
+                <input type="text" id="modal-tags" placeholder="Tags (comma separated)">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="modal-save">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Edit Draft -->
+    <div id="draft-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content modal-wide">
+            <div class="modal-header">
+                <h3>Edit Draft</h3>
+                <button class="btn-close" id="draft-modal-close">X</button>
+            </div>
+            <div class="modal-body">
+                <div id="draft-editor"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="draft-modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="draft-modal-save">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+[Unit]
+Description=Flow — Personal X Content Pipeline
+After=network.target
+
+[Service]
+Type=simple
+User=metis
+WorkingDirectory=__INSTALL_DIR__
+ExecStart=__PYTHON_BIN__ __INSTALL_DIR__/api.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
